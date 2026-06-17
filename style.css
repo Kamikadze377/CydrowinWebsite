@@ -696,7 +696,7 @@ nav ul {
 .contact-inner {
   width: min(100%, 1450px);
   box-sizing: border-box;
-  padding: clamp(3.5rem, 8vw, 6.5rem) clamp(1.25rem, 5vw, 4rem) clamp(4rem, 9vw, 7.8125rem);
+  padding: clamp(2rem, 8vw, 3rem) clamp(1.25rem, 5vw, 4rem) clamp(4rem, 9vw, 7.8125rem);
   margin: 0 auto;
 }
 
@@ -985,4 +985,64 @@ footer {
   .footer-subpages {
     flex-direction: column;
   }
+}
+
+/* SKLEP */
+
+.heroShop {
+  --heroShop-parallax-y: 0px;
+  --heroShop-parallax-bleed: 90px;
+  --heroShop-title-size: 8.75rem;
+  --heroShop-title-bottom: 45px;
+  --heroShop-title-inline-gap: clamp(1.5rem, 8vw, 5rem);
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg);
+}
+
+.heroShop-image,
+.heroShop::before {
+  position: absolute;
+  top: calc(-1 * var(--heroShop-parallax-bleed));
+  right: 0;
+  bottom: calc(-1 * var(--heroShop-parallax-bleed));
+  left: 0;
+  background: center calc(60% + var(--heroShop-parallax-y)) / cover no-repeat;
+}
+
+.heroShop-image {
+  z-index: 0;
+}
+
+.heroShop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      rgba(254, 249, 243, 0) 0%,
+      rgba(254, 249, 243, 0.16) 32%,
+      rgba(254, 249, 243, 0.72) 68%,
+      var(--bg) 100%);
+}
+
+.heroShop h1 {
+  position: relative;
+  top: 37.5%;
+  z-index: 3;
+  box-sizing: border-box;
+  padding-inline: var(--heroShop-title-inline-gap);
+
+  font-style: normal;
+  font-size: var(--heroShop-title-size);
+  line-height: 1.1;
+  white-space: nowrap;
+
+  margin: 0;
+  text-align: center;
+  color: var(--bg);
 }
