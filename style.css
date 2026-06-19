@@ -102,7 +102,7 @@ nav ul {
   bottom: calc(-1 * var(--hero-parallax-bleed));
   left: 0;
   background: center calc(60% + var(--hero-parallax-y)) / cover no-repeat;
-  animation: image-show 20s ease-in-out infinite;
+  animation: image-show 25s ease-in-out infinite;
 }
 
 .hero-image {
@@ -127,13 +127,14 @@ nav ul {
 .hero::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0 0 -3px;
   z-index: 1;
   pointer-events: none;
   background: linear-gradient(to bottom,
       rgba(254, 249, 243, 0) 0%,
       rgba(254, 249, 243, 0.16) 32%,
       rgba(254, 249, 243, 0.72) 68%,
+      var(--bg) calc(100% - 12px),
       var(--bg) 100%);
 }
 
@@ -163,31 +164,39 @@ nav ul {
     background-image: url(assets/pszczolka.jpg);
   }
 
-  12.5% {
+  10% {
     background-image: url(assets/pszczolka.jpg);
   }
 
-  25% {
-    background-image: url(assets/jablka.jpg);
+  20% {
+    background-image: url(assets/szef.jpg);
   }
 
-  37.5% {
+  30% {
+    background-image: url(assets/szef.jpg);
+  }
+
+  40% {
     background-image: url(assets/jablka.jpg);
   }
 
   50% {
-    background-image: url(assets/kwiaty.jpg);
+    background-image: url(assets/jablka.jpg);
   }
 
-  62.5% {
-    background-image: url(assets/kwiaty.jpg);
+  60% {
+    background-image: url(assets/beczka.jpg);
   }
 
-  75% {
+  70% {
+    background-image: url(assets/beczka.jpg);
+  }
+
+  80% {
     background-image: url(assets/sad.jpg);
   }
 
-  87.5% {
+  90% {
     background-image: url(assets/sad.jpg);
   }
 
@@ -210,6 +219,9 @@ nav ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;
   background-image: linear-gradient(to bottom, var(--bg), var(--bgDrk));
   height: 600px;
   text-align: center;
@@ -987,62 +999,81 @@ footer {
   }
 }
 
-/* SKLEP */
+/* Sklep */
+
+.shop-page {
+  background: var(--bgDrk);
+}
 
 .heroShop {
-  --heroShop-parallax-y: 0px;
-  --heroShop-parallax-bleed: 90px;
-  --heroShop-title-size: 8.75rem;
-  --heroShop-title-bottom: 45px;
-  --heroShop-title-inline-gap: clamp(1.5rem, 8vw, 5rem);
+  --hero-parallax-y: 0px;
+  --hero-parallax-bleed: 90px;
+  --hero-title-size: clamp(3.75rem, 12vw, 8.75rem);
+  --hero-title-inline-gap: clamp(1.5rem, 8vw, 5rem);
   position: relative;
+  display: grid;
+  place-items: center;
   width: 100%;
-  height: 500px;
+  height: clamp(18rem, 52vw, 24rem);
   overflow: hidden;
   isolation: isolate;
   background: var(--bg);
 }
 
-.heroShop-image,
-.heroShop::before {
-  position: absolute;
-  top: calc(-1 * var(--heroShop-parallax-bleed));
-  right: 0;
-  bottom: calc(-1 * var(--heroShop-parallax-bleed));
-  left: 0;
-  background: center calc(60% + var(--heroShop-parallax-y)) / cover no-repeat;
-}
-
 .heroShop-image {
+  position: absolute;
+  top: calc(-1 * var(--hero-parallax-bleed));
+  right: 0;
+  bottom: calc(-1 * var(--hero-parallax-bleed));
+  left: 0;
   z-index: 0;
+  background: url("assets/regal.jpg") center calc(50% + var(--hero-parallax-y)) / cover no-repeat;
 }
 
 .heroShop::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0 0 -3px;
   z-index: 1;
   pointer-events: none;
   background: linear-gradient(to bottom,
       rgba(254, 249, 243, 0) 0%,
-      rgba(254, 249, 243, 0.16) 32%,
-      rgba(254, 249, 243, 0.72) 68%,
+      rgba(254, 249, 243, 0.10) 38%,
+      rgba(254, 249, 243, 0.76) 78%,
+      var(--bg) calc(100% - 12px),
       var(--bg) 100%);
 }
 
 .heroShop h1 {
   position: relative;
-  top: 37.5%;
   z-index: 3;
   box-sizing: border-box;
-  padding-inline: var(--heroShop-title-inline-gap);
+  max-width: 100%;
+  padding-inline: var(--hero-title-inline-gap);
 
-  font-style: normal;
-  font-size: var(--heroShop-title-size);
-  line-height: 1.1;
+  font-size: var(--hero-title-size);
+  line-height: 1;
   white-space: nowrap;
 
   margin: 0;
   text-align: center;
   color: var(--bg);
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.55);
+}
+
+.transition-reversed {
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;
+  height: clamp(7rem, 14vw, 11rem);
+  background-image: linear-gradient(to bottom, var(--bg), var(--bgDrk));
+}
+
+.shop-content {
+  background: var(--bgDrk);
+  min-height: 100vh;
+}
+
+.shop-content-inner {
+  min-height: 100vh;
 }

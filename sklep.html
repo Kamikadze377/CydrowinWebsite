@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap">
 </head>
 
-<body>
+<body class="shop-page">
     <header>
         <div class="container header-inner">
             <div class="brand">
@@ -23,9 +23,9 @@
             <nav id="main-nav">
                 <ul>
                     <li><a href="sklep.html">SKLEP</a></li>
-                    <li><a href="#aktualnosci">AKTUALNOŚCI</a></li>
-                    <li><a href="#o-nas">O NAS</a></li>
-                    <li><a href="#kontakt">KONTAKT</a></li>
+                    <li><a href="index.html#aktualnosci">AKTUALNOŚCI</a></li>
+                    <li><a href="index.html#o-nas">O NAS</a></li>
+                    <li><a href="index.html#kontakt">KONTAKT</a></li>
                     <li>
                         <svg class="basket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                             <path
@@ -37,15 +37,19 @@
             </nav>
         </div>
     </header>
-</body>
 
-<main>
-    <div class="heroShop">
-        <div class="heroShop-image">
-            <img src="assets/beczka.jpg" alt="Beczka" width="100%">
-        </div>
-        <h1>SKLEP</h1>
-    </div>
-</main>
+    <main>
+        <section class="heroShop" aria-labelledby="shop-title">
+            <div class="heroShop-image" role="img" aria-label="Regał z winami"></div>
+            <h1 id="shop-title">Sklep</h1>
+        </section>
+        <div class="transition-reversed"></div>
+        <section class="shop-content">
+            <div class="container shop-content-inner"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
 
 </html>

@@ -1,20 +1,37 @@
 // hero
 
-const hero = document.querySelector(".hero");
-const heroTitle = document.querySelector(".hero h1");
-const heroTitleMeasure = heroTitle ? document.createElement("span") : null;
+const pageHeroParallaxStrength = 0.120123456789;
+const pageHeroParallaxLimit = 70;
+const pageHeroes = [".hero", ".heroShop"]
+    .map((selector) => {
+        const element = document.querySelector(selector);
+        const title = element ? element.querySelector("h1") : null;
+
+        return element && title
+            ? {
+                element,
+                title,
+                measure: document.createElement("span")
+            }
+            : null;
+    })
+    .filter(Boolean);
+
+// start
+
 const start = document.querySelector(".start");
+
+// invitation
+
 const invitation = document.querySelector(".invitation");
 const invitationImage = document.querySelector(".invitation img");
 const invitationTitleRows = document.querySelectorAll(".invitation h1 span");
 const invitationButton = document.querySelector(".invitation .button");
 const invitationMeasure = invitation ? document.createElement("span") : null;
-const heroParallaxStrength = 0.120123456789;
-const heroParallaxLimit = 70;
 
-if (heroTitleMeasure) {
-    heroTitleMeasure.setAttribute("aria-hidden", "true");
-    Object.assign(heroTitleMeasure.style, {
+pageHeroes.forEach(({ measure }) => {
+    measure.setAttribute("aria-hidden", "true");
+    Object.assign(measure.style, {
         position: "fixed",
         left: "-9999px",
         top: "0",
@@ -22,8 +39,8 @@ if (heroTitleMeasure) {
         whiteSpace: "nowrap",
         pointerEvents: "none"
     });
-    document.body.appendChild(heroTitleMeasure);
-}
+    document.body.appendChild(measure);
+});
 
 if (invitationMeasure) {
     invitationMeasure.setAttribute("aria-hidden", "true");
@@ -38,45 +55,53 @@ if (invitationMeasure) {
     document.body.appendChild(invitationMeasure);
 }
 
-function updateHeroParallax() {
-    if (!hero) return;
+function updatePageHeroParallax() {
+    pageHeroes.forEach(({ element }) => {
+        const rect = element.getBoundingClientRect();
+        const offset = rect.top * pageHeroParallaxStrength;
+        const clampedOffset = Math.max(-pageHeroParallaxLimit, Math.min(pageHeroParallaxLimit, offset));
 
-    const rect = hero.getBoundingClientRect();
-    const offset = rect.top * heroParallaxStrength;
-    const clampedOffset = Math.max(-heroParallaxLimit, Math.min(heroParallaxLimit, offset));
-
-    hero.style.setProperty("--hero-parallax-y", `${clampedOffset.toFixed(2)}px`);
+        element.style.setProperty("--hero-parallax-y", `${clampedOffset.toFixed(2)}px`);
+    });
 }
 
-function updateHeroTitleSize() {
-    if (!hero || !heroTitle || !heroTitleMeasure) return;
+function updatePageHeroTitleSize() {
+    pageHeroes.forEach(({ element, title, measure }) => {
+        element.style.removeProperty("--hero-title-size");
 
-    hero.style.removeProperty("--hero-title-size");
+        const heroRect = element.getBoundingClientRect();
+        const titleStyle = window.getComputedStyle(title);
+        const rootFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16;
+        const maxSize = parseFloat(titleStyle.fontSize);
+        const minSize = Math.max(12, rootFontSize);
+        const sidePadding = parseFloat(titleStyle.paddingLeft) + parseFloat(titleStyle.paddingRight);
+        const verticalPadding = parseFloat(titleStyle.paddingTop) + parseFloat(titleStyle.paddingBottom);
+        const visibleWidth = Math.min(heroRect.width, document.documentElement.clientWidth);
+        const availableWidth = Math.max(0, visibleWidth - sidePadding);
+        const titleBottom = parseFloat(titleStyle.bottom);
+        const availableHeight = Math.max(
+            1,
+            element.clientHeight
+            - verticalPadding
+            - (Number.isFinite(titleBottom) ? titleBottom + rootFontSize : rootFontSize * 2)
+        );
 
-    const heroRect = hero.getBoundingClientRect();
-    const titleStyle = window.getComputedStyle(heroTitle);
-    const rootFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16;
-    const maxSize = parseFloat(titleStyle.fontSize);
-    const minSize = Math.max(12, rootFontSize);
-    const sidePadding = parseFloat(titleStyle.paddingLeft) + parseFloat(titleStyle.paddingRight);
-    const visibleWidth = Math.min(heroRect.width, document.documentElement.clientWidth);
-    const availableWidth = Math.max(0, visibleWidth - sidePadding);
-    heroTitleMeasure.textContent = heroTitle.textContent;
-    heroTitleMeasure.style.font = titleStyle.font;
-    heroTitleMeasure.style.letterSpacing = titleStyle.letterSpacing;
-    const textWidth = Math.max(1, heroTitleMeasure.getBoundingClientRect().width);
-    const titleBottom = parseFloat(titleStyle.bottom) || 0;
-    const availableHeight = Math.max(1, hero.clientHeight - titleBottom - rootFontSize);
-    const titleHeight = Math.max(1, heroTitle.scrollHeight);
-    const scale = Math.min(1, availableWidth / textWidth, availableHeight / titleHeight);
-    const fittedSize = Math.max(minSize, maxSize * scale);
+        measure.textContent = title.textContent;
+        measure.style.font = titleStyle.font;
+        measure.style.letterSpacing = titleStyle.letterSpacing;
 
-    hero.style.setProperty("--hero-title-size", `${fittedSize.toFixed(2)}px`);
+        const textWidth = Math.max(1, measure.getBoundingClientRect().width);
+        const titleHeight = Math.max(1, title.scrollHeight);
+        const scale = Math.min(1, availableWidth / textWidth, availableHeight / titleHeight);
+        const fittedSize = Math.max(minSize, maxSize * scale);
+
+        element.style.setProperty("--hero-title-size", `${fittedSize.toFixed(2)}px`);
+    });
 }
 
-function updateHero() {
-    updateHeroParallax();
-    updateHeroTitleSize();
+function updatePageHeroes() {
+    updatePageHeroParallax();
+    updatePageHeroTitleSize();
 }
 
 function updateInvitationSize() {
@@ -129,13 +154,13 @@ function updateInvitationSize() {
 }
 
 function updateResponsiveElements() {
-    updateHero();
+    updatePageHeroes();
     updateInvitationSize();
 }
 
 window.addEventListener("load", updateResponsiveElements);
 window.addEventListener("resize", updateResponsiveElements);
-window.addEventListener("scroll", updateHeroParallax, { passive: true });
+window.addEventListener("scroll", updatePageHeroParallax, { passive: true });
 
 if (document.fonts) {
     document.fonts.ready.then(updateResponsiveElements);
@@ -212,11 +237,11 @@ window.addEventListener("scroll", revealPassedElements, { passive: true });
 
 // quick-message
 
-document.addEventListener('DOMContentLoaded', function(){
-  const form = document.getElementById('contact-form');
-  form && form.addEventListener('submit', function(e){
-    e.preventDefault();
-    alert('Dziękujemy — wiadomość została wysłana.');
-    form.reset();
-  });
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contact-form');
+    form && form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Dziękujemy — wiadomość została wysłana.');
+        form.reset();
+    });
 });
