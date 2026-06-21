@@ -1077,3 +1077,19 @@ footer {
 .shop-content-inner {
   min-height: 100vh;
 }
+
+.products {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.product {
+  text-align: center;
+  color: var(--accentDrk);
+  font-size: 1.25rem;
+  line-height: 0.75;
+}
+
+.product-image {
+  height: 300px;
+}
