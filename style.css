@@ -1002,7 +1002,20 @@ footer {
 /* Sklep */
 
 .shop-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background: var(--bgDrk);
+}
+
+.shop-page main {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.shop-page footer {
+  flex: none;
 }
 
 .heroShop {
@@ -1070,17 +1083,17 @@ footer {
 }
 
 .shop-content {
-  background: var(--bgDrk);
-  min-height: 100vh;
+  flex: 1 0 auto;
+  background-image: linear-gradient(to bottom, var(--bgDrk), var(--accent));
 }
 
 .shop-content-inner {
-  min-height: 100vh;
+  padding-bottom: clamp(4rem, 9vw, 7.8125rem);
 }
 
 .products {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .product {
@@ -1088,8 +1101,33 @@ footer {
   color: var(--accentDrk);
   font-size: 1.25rem;
   line-height: 0.75;
+
+  margin: 2rem;
 }
 
 .product-image {
   height: 300px;
+  padding-inline: 7rem;
+  background-image: radial-gradient(circle, var(--bg) 0%, transparent 50%);
+}
+
+.product-title {
+  font-size: 2rem;
+  font-family: "WindSong", cursive;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 2.5rem;
+} 
+
+.product-description {
+  font-size: 1.25rem;
+  font-weight: 100;
+  line-height: 1.1;
+  margin-top: 0.75rem;
+}
+
+.product-price {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin-top: 2rem;
 }
