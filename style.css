@@ -360,6 +360,9 @@ nav ul {
   font-weight: 100;
   color: var(--text);
   text-align: justify;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .news-card__footer {
@@ -454,6 +457,7 @@ nav ul {
 
   .news-card__copy p {
     font-size: 1.125rem;
+    text-align: left;
   }
 
   .news-card__footer {
@@ -526,6 +530,9 @@ nav ul {
   font-size: clamp(1rem, 1.45vw, 1.25rem);
 
   text-align: justify;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: normal;
   font-style: italic;
   line-height: 1.6;
   color: var(--muted);
@@ -549,18 +556,26 @@ nav ul {
     min-height: auto;
     padding: 4rem 1.25rem 5rem;
   }
+
+  .about-content {
+    max-width: min(100%, 44rem);
+  }
+
+  .story {
+    text-align: left;
+  }
 }
 
 .gallery {
   --gallery-inline-padding: clamp(1rem, 4vw, 4rem);
-  --gallery-card-gap: clamp(4rem, 10vw, 6.25rem);
+  --gallery-card-gap: clamp(6rem, 12vw, 9rem);
   --gallery-caption-gap: clamp(2rem, 3vw, 2.625rem);
   display: block;
   background-image: linear-gradient(to bottom, black 37.5%, var(--bgDrk));
   height: fit-content;
   box-sizing: border-box;
   padding-inline: var(--gallery-inline-padding);
-  padding-bottom: 10rem
+  padding-bottom: 7rem
 }
 
 .pair-of-photos {
