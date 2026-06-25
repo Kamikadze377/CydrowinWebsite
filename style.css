@@ -222,7 +222,7 @@ nav ul {
 }
 
 .start-content {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -262,7 +262,12 @@ nav ul {
 
 .start .button {
   display: inline-block;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 8px clamp(0.9rem, 3.5vw, 20px);
+  font-size: clamp(0.9rem, 4.4vw, 1.5rem);
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .transition {
@@ -560,6 +565,10 @@ nav ul {
 
   .about-content {
     max-width: min(100%, 44rem);
+  }
+
+  .about-image {
+    background-position: 57% calc(30% + var(--about-parallax-y, 0px));
   }
 
   .about h1 {
@@ -1111,7 +1120,7 @@ footer {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--accent) 75%, transparent));
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--accent) 50%, transparent));
 }
 
 .shop-content-inner {
