@@ -102,6 +102,7 @@ nav ul {
   bottom: calc(-1 * var(--hero-parallax-bleed));
   left: 0;
   background: center calc(60% + var(--hero-parallax-y)) / cover no-repeat;
+  background-image: url("assets/pszczolka.jpg");
   animation: image-show 25s ease-in-out infinite;
 }
 
