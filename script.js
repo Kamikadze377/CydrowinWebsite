@@ -17,18 +17,6 @@ const pageHeroes = [".hero", ".heroShop"]
     })
     .filter(Boolean);
 
-// start
-
-const start = document.querySelector(".start");
-
-// invitation
-
-const invitation = document.querySelector(".invitation");
-const invitationImage = document.querySelector(".invitation img");
-const invitationTitleRows = document.querySelectorAll(".invitation h1 span");
-const invitationButton = document.querySelector(".invitation .button");
-const invitationMeasure = invitation ? document.createElement("span") : null;
-
 pageHeroes.forEach(({ measure }) => {
     measure.setAttribute("aria-hidden", "true");
     Object.assign(measure.style, {
@@ -41,19 +29,6 @@ pageHeroes.forEach(({ measure }) => {
     });
     document.body.appendChild(measure);
 });
-
-if (invitationMeasure) {
-    invitationMeasure.setAttribute("aria-hidden", "true");
-    Object.assign(invitationMeasure.style, {
-        position: "fixed",
-        left: "-9999px",
-        top: "0",
-        visibility: "hidden",
-        whiteSpace: "nowrap",
-        pointerEvents: "none"
-    });
-    document.body.appendChild(invitationMeasure);
-}
 
 function updatePageHeroParallax() {
     pageHeroes.forEach(({ element }) => {
@@ -104,70 +79,12 @@ function updatePageHeroes() {
     updatePageHeroTitleSize();
 }
 
-function updateInvitationSize() {
-    if (!start || !invitation || !invitationMeasure) return;
-
-    start.style.removeProperty("--invitation-scale");
-
-    const startRect = start.getBoundingClientRect();
-    const startStyle = window.getComputedStyle(start);
-    const invitationStyle = window.getComputedStyle(invitation);
-    const title = invitation.querySelector("h1");
-    const titleStyle = title ? window.getComputedStyle(title) : null;
-    const buttonStyle = invitationButton ? window.getComputedStyle(invitationButton) : null;
-    const rootFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16;
-    const sidePadding = parseFloat(invitationStyle.paddingLeft) + parseFloat(invitationStyle.paddingRight);
-    const visibleWidth = Math.min(startRect.width, document.documentElement.clientWidth);
-    const availableWidth = Math.max(1, visibleWidth - sidePadding);
-    const availableHeight = Math.max(1, start.clientHeight - (rootFontSize * 2));
-    const imageBaseWidth = parseFloat(startStyle.getPropertyValue("--invitation-image-base-width")) || 0;
-    const imageBaseHeight = invitationImage && invitationImage.naturalWidth
-        ? imageBaseWidth * (invitationImage.naturalHeight / invitationImage.naturalWidth)
-        : parseFloat(startStyle.getPropertyValue("--invitation-image-base-height")) || 0;
-    const titleLineHeight = titleStyle ? parseFloat(titleStyle.lineHeight) || parseFloat(titleStyle.fontSize) * 1.35 : 0;
-    const titleMarginTop = titleStyle ? parseFloat(titleStyle.marginTop) || 0 : 0;
-    const titleMarginBottom = titleStyle ? parseFloat(titleStyle.marginBottom) || 0 : 0;
-    const titleWidth = titleStyle ? [...invitationTitleRows].reduce((maxWidth, row) => {
-        invitationMeasure.textContent = row.textContent;
-        invitationMeasure.style.font = titleStyle.font;
-        invitationMeasure.style.letterSpacing = titleStyle.letterSpacing;
-        return Math.max(maxWidth, invitationMeasure.getBoundingClientRect().width);
-    }, 0) : 0;
-    const titleHeight = titleStyle ? titleMarginTop + invitationTitleRows.length * titleLineHeight + titleMarginBottom : 0;
-    const buttonWidth = buttonStyle && invitationButton ? (() => {
-        invitationMeasure.textContent = invitationButton.textContent;
-        invitationMeasure.style.font = buttonStyle.font;
-        invitationMeasure.style.letterSpacing = buttonStyle.letterSpacing;
-        return invitationMeasure.getBoundingClientRect().width
-            + (parseFloat(buttonStyle.paddingLeft) || 0)
-            + (parseFloat(buttonStyle.paddingRight) || 0);
-    })() : 0;
-    const buttonLineHeight = buttonStyle ? parseFloat(buttonStyle.lineHeight) || parseFloat(buttonStyle.fontSize) * 1.2 : 0;
-    const buttonHeight = buttonStyle
-        ? buttonLineHeight + (parseFloat(buttonStyle.paddingTop) || 0) + (parseFloat(buttonStyle.paddingBottom) || 0)
-        : 0;
-    const contentWidth = Math.max(1, imageBaseWidth, titleWidth, buttonWidth);
-    const contentHeight = Math.max(1, imageBaseHeight + titleHeight + buttonHeight);
-    const scale = Math.min(1, availableWidth / contentWidth, availableHeight / contentHeight);
-
-    start.style.setProperty("--invitation-scale", scale.toFixed(3));
-}
-
-function updateResponsiveElements() {
-    updatePageHeroes();
-    updateInvitationSize();
-}
-
-window.addEventListener("load", updateResponsiveElements);
-window.addEventListener("resize", updateResponsiveElements);
+window.addEventListener("load", updatePageHeroes);
+window.addEventListener("resize", updatePageHeroes);
 window.addEventListener("scroll", updatePageHeroParallax, { passive: true });
 
 if (document.fonts) {
-    document.fonts.ready.then(updateResponsiveElements);
-}
-
-if (invitationImage && !invitationImage.complete) {
-    invitationImage.addEventListener("load", updateInvitationSize);
+    document.fonts.ready.then(updatePageHeroes);
 }
 
 // about

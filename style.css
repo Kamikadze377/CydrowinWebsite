@@ -206,57 +206,40 @@ nav ul {
 }
 
 .start {
-  --invitation-scale: 1;
-  --invitation-image-base-width: 575.8px;
-  --invitation-image-base-height: 288px;
-  --invitation-title-base-size: 1.6rem;
-  --invitation-title-base-margin-top: 1.2rem;
-  --invitation-title-base-margin-bottom: 2.4rem;
-  --invitation-button-base-size: 1.5rem;
-  --invitation-button-base-padding-y: 8px;
-  --invitation-button-base-padding-x: 20px;
-  --invitation-inline-gap: clamp(1.25rem, 7vw, 4rem);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
   margin-top: -2px;
+  padding-inline: clamp(1.25rem, 7vw, 4rem);
   background-image: linear-gradient(to bottom, var(--bg), var(--bgDrk));
   height: 600px;
   text-align: center;
 }
 
-.invitation {
-  width: fit-content;
-  max-width: 100%;
-  box-sizing: border-box;
-  min-width: 0;
-  padding-inline: var(--invitation-inline-gap);
-}
-
-.invitation img {
-  display: block;
-  width: calc(var(--invitation-image-base-width) * var(--invitation-scale));
-  max-width: 100%;
-  height: auto !important;
+.start-content {
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.start h1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: calc(var(--invitation-title-base-size) * var(--invitation-scale));
-  line-height: 1.35;
-  margin: calc(var(--invitation-title-base-margin-top) * var(--invitation-scale)) calc(0.6rem * var(--invitation-scale)) calc(var(--invitation-title-base-margin-bottom) * var(--invitation-scale));
-  color: var(--accentDrk);
+.start img {
+  display: block;
+  width: min(100%, 575.8px);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 0.2rem;
 }
 
-.start h1 span {
-  display: block;
+.start h1 {
+  font-size: 1.6rem;
+  line-height: 1.35;
+  margin: 1.2rem auto 2.4rem;
+  color: var(--accentDrk);
   text-align: center;
-  white-space: nowrap;
 }
 
 .button {
@@ -274,12 +257,9 @@ nav ul {
   background-color: var(--accentDrk)
 }
 
-.invitation .button {
+.start .button {
   display: inline-block;
-  font-size: calc(var(--invitation-button-base-size) * var(--invitation-scale));
-  padding: calc(var(--invitation-button-base-padding-y) * var(--invitation-scale)) calc(var(--invitation-button-base-padding-x) * var(--invitation-scale));
   line-height: 1.2;
-  white-space: nowrap;
 }
 
 .transition {
@@ -1134,11 +1114,11 @@ footer {
 .product-shadow {
   position: absolute;
   left: 0;
-  bottom: -47.5%;
+  bottom: -47%;
   height: 100%;
   width: 100%;
   z-index: 2;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.125) 0%, transparent 50%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.075) 0%, transparent 50%);
   transform: rotateX(75deg) scale(0.5);
 
   transition: transform 0.5s ease;
@@ -1164,11 +1144,11 @@ footer {
 }
 
 .product:hover .product-image {
-  transform: translateY(-25px);
+  transform: translateY(-30px);
 }
 
 .product:hover .product-shadow {
-  transform: rotateX(75deg) scale(0.625);
+  transform: rotateX(75deg) scale(0.52);
 }
 
 .product-title {
