@@ -1131,23 +1131,44 @@ footer {
   background: radial-gradient(circle, var(--bg) 0%, transparent 50%);
 }
 
+.product-shadow {
+  position: absolute;
+  left: 0;
+  bottom: -47.5%;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.125) 0%, transparent 50%);
+  transform: rotateX(75deg) scale(0.5);
+
+  transition: transform 0.5s ease;
+}
+
 .product > * {
   position: relative;
   z-index: 3;
 }
 
+.product-visual {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
 .product-image {
+  display: block;
+  margin-inline: auto;
+  height: 300px;
   transform: translateY(0);
   transition: transform 0.5s ease;
 }
 
 .product:hover .product-image {
-  transform: translateY(-13px);
+  transform: translateY(-25px);
 }
 
-.product-image {
-  height: 300px;
-  padding-inline: 7rem;
+.product:hover .product-shadow {
+  transform: rotateX(75deg) scale(0.625);
 }
 
 .product-title {
