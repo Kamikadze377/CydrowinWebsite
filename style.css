@@ -613,7 +613,7 @@ nav ul {
     background-image:
       linear-gradient(to right, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.64) 38%, rgba(0, 0, 0, 0.16) 72%, transparent 100%),
       linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.84) 18%, transparent 68%), 
-      linear-gradient(to left, rgba(0, 0, 0, 0.82) 0%, transparent 100%);
+      linear-gradient(to left, rgba(0, 0, 0, 0.375) 50%, transparent 100%);
   }
 
   .story {
@@ -623,7 +623,7 @@ nav ul {
   }
 
   .signature {
-    margin-right: 5rem;
+    margin-right: 1.6rem;
   }
 }
 
