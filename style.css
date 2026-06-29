@@ -584,7 +584,7 @@ nav ul {
   font-family: "WindSong", cursive;
   font-weight: 500;
   font-style: italic;
-  font-size: clamp(1.5em, 5vw, 2.8rem);
+  font-size: clamp(1.5em, 5vw, 2rem);
   line-height: 1;
 
   text-align: end;
