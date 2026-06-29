@@ -11,7 +11,14 @@
 }
 
 html {
+  scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -257,6 +264,7 @@ nav ul {
   background: var(--accent);
   color: var(--bg);
   transition: background-color 0.3s ease;
+  box-shadow: 0 6px 14px var(--bgDrk);;
 }
 
 .button:hover {
@@ -719,7 +727,7 @@ nav ul {
 .described-photo.reveal-up {
   opacity: 0;
   transform: translateY(60px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 1.75s ease, transform 1.75s ease;
 }
 
 .described-photo.reveal-up.visible {
@@ -751,6 +759,58 @@ nav ul {
   max-width: 100%;
 }
 
+@media (min-width: 1151px) and (max-width: 1300px) {
+  .gallery {
+    --gallery-card-gap: clamp(5rem, 9vw, 7rem);
+    --gallery-caption-gap: clamp(1.5rem, 2.5vw, 2rem);
+  }
+
+  .pair-of-photos {
+    column-gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .pair-of-photos:nth-of-type(1) .described-photo:nth-child(1) {
+    --gallery-photo-fluid-width: 58vw;
+    --gallery-photo-width: 560px;
+  }
+
+  .pair-of-photos:nth-of-type(1) .described-photo:nth-child(2) {
+    --gallery-photo-fluid-width: 30vw;
+    --gallery-photo-width: 250px;
+    translate: -1rem 0;
+  }
+
+  .pair-of-photos:nth-of-type(2) .described-photo:nth-child(1) {
+    --gallery-photo-width: 260px;
+  }
+
+  .pair-of-photos:nth-of-type(2) .described-photo:nth-child(2) {
+    --gallery-photo-width: 295px;
+  }
+
+  .description {
+    max-width: min(36rem, calc(100vw - var(--gallery-inline-padding) - var(--gallery-inline-padding)));
+    font-size: clamp(0.95rem, 1.45vw, 1.15rem);
+  }
+}
+
+@media (max-width: 1150px) {
+  .pair-of-photos {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 0;
+  }
+
+  .pair-of-photos .described-photo {
+    transition-delay: 0.25s !important;
+  }
+
+  .pair-of-photos:nth-of-type(1) .described-photo:nth-child(2) {
+    translate: none;
+  }
+}
+
 .contact {
   background-image: linear-gradient(to bottom, var(--bg), var(--bgDrk));
   overflow: hidden;
@@ -775,7 +835,7 @@ nav ul {
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1;
   color: var(--text);
-  margin: 0 0 clamp(2.5rem, 6vw, 4.6875rem);
+  margin: 0 0 clamp(2.5rem, 6vw, 6rem);
   overflow-wrap: break-word;
 }
 
@@ -873,6 +933,7 @@ nav ul {
   background: var(--accent);
   color: var(--bg);
   transition: background-color 0.3s ease;
+  box-shadow: 0 6px 14px var(--bgDrk);
 
   display: block;
   margin-inline: auto 0;
@@ -905,7 +966,7 @@ nav ul {
   }
 
   .contact h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 
   .information {
