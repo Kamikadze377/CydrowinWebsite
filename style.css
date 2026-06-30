@@ -264,7 +264,6 @@ nav ul {
   background: var(--accent);
   color: var(--bg);
   transition: background-color 0.3s ease;
-  box-shadow: 0 6px 14px var(--bgDrk);;
 }
 
 .button:hover {
@@ -280,6 +279,7 @@ nav ul {
   font-size: 1.6rem;
   line-height: 1.2;
   white-space: nowrap;
+  box-shadow: 0 3px 6px var(--accentDrk);
 }
 
 .start .button strong {
@@ -612,7 +612,7 @@ nav ul {
   .about .gradient {
     background-image:
       linear-gradient(to right, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.64) 38%, rgba(0, 0, 0, 0.16) 72%, transparent 100%),
-      linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.84) 18%, transparent 68%), 
+      linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.84) 18%, transparent 68%),
       linear-gradient(to left, rgba(0, 0, 0, 0.375) 50%, transparent 100%);
   }
 
