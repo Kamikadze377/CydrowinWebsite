@@ -1316,6 +1316,8 @@ footer {
 .product-page main {
   flex: 1 0 auto;
   background-image: linear-gradient(to bottom, var(--bgDrk) 0%, var(--bg) 100%);
+
+  /* border: solid lime; */
 }
 
 .product-page footer {
@@ -1324,15 +1326,25 @@ footer {
 
 .product-page-content {
   display: flex;
-  margin-block: 5rem;
+  /* margin-block: 5rem; */
+  margin-block: clamp(5rem, 10vw, 7.8125rem);
+  padding-inline: clamp(2.5rem, 8vw, 9.375rem);
+
+  /* border: solid yellow; */
 }
 
 .product-page-content .product-visual {
-  margin: 5rem;
+  /* margin: 5rem; */
+  
+  border: none;
 }
 
 .product-page-content .product-description {
-  margin: 5rem;
+  /* margin: 5rem; */
+
+
+  margin: 0 0 0 7rem;
+  /* border: solid green; */
 }
 
 .product-page-content .title {
@@ -1340,13 +1352,19 @@ footer {
   font-weight: 500;
   font-size: clamp(2.5rem, 6vw, 4rem);
   color: var(--text);
-  margin-block: 0 3rem;
+  /* margin-block: 0 3rem; */
   text-shadow: 0 7px 10px rgba(0, 0, 0, 0.12);
+
+  margin: 0 0 2rem 0;
+  /* border: solid blue; */
 }
 
 .product-page-content .subtitle {
   color: var(--text);
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+
+  margin: 0 0 2rem 0;
+  /* border: solid violet; */
 }
 
 .product-page-content .text {
@@ -1354,12 +1372,19 @@ footer {
   font-size: clamp(1rem, 1.6vw, 1.25rem);
   line-height: 1.5;
   color: var(--text);
+
+  margin: 0 0 4rem 0;
+  /* border: solid orange; */
 }
 
 .purchase {
   display: flex;
   justify-content: space-between;
-  margin-block: 2rem;
+  align-items: center;
+  /* margin-block: 2rem; */
+
+  margin: 0;
+  /* border: solid purple; */
 }
 
 .purchase button {
@@ -1380,9 +1405,11 @@ footer {
 }
 
 .purchase .price {
-  margin-block: 0.5rem;
+  /* margin-block: 0.5rem; */
   font-size: 2.5rem;
-  color: var(--text)
+  color: var(--text);
+
+  margin: 0;
 }
 
 @media (max-width: 1000px) {
@@ -1392,7 +1419,8 @@ footer {
 
   .product-page-content .product-visual,
   .product-page-content .product-description {
-    margin: clamp(1rem, 5vw, 4rem);
+    /* margin: clamp(1rem, 5vw, 4rem); */
+    margin: 4rem 0 0 0;
     align-self: center;
   }
 
@@ -1412,6 +1440,7 @@ footer {
 
   .purchase .price {
     margin-inline: auto;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
+    margin: 0 0 2rem 0;
   }
 }
