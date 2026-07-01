@@ -1261,7 +1261,7 @@ footer {
   z-index: 3;
 }
 
-.product-visual {
+.product-thumbnail {
   display: grid;
   place-items: center;
   width: 100%;
@@ -1302,4 +1302,116 @@ footer {
   font-size: 1.75rem;
   font-weight: 500;
   margin-top: 2rem;
+}
+
+/* Produkt */
+
+.product-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.product-page main {
+  flex: 1 0 auto;
+  background-image: linear-gradient(to bottom, var(--bgDrk) 0%, var(--bg) 100%);
+}
+
+.product-page footer {
+  flex: none;
+}
+
+.product-page-content {
+  display: flex;
+  margin-block: 5rem;
+}
+
+.product-page-content .product-visual {
+  margin: 5rem;
+}
+
+.product-page-content .product-description {
+  margin: 5rem;
+}
+
+.product-page-content .title {
+  font-family: "WindSong", cursive;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--text);
+  margin-block: 0 3rem;
+  text-shadow: 0 7px 10px rgba(0, 0, 0, 0.12);
+}
+
+.product-page-content .subtitle {
+  color: var(--text);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.product-page-content .text {
+  text-align: left;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.purchase {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 2rem;
+}
+
+.purchase button {
+  display: block;
+  border: none;
+  border-radius: 999px;
+  padding-block: 0.75rem;
+  padding-inline: 1.5rem;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 1.25rem;
+  color: var(--bg);
+  background-color: var(--accent);
+  transition: background-color ease 0.3s;
+}
+
+.purchase button:hover {
+  background-color: var(--accentDrk);
+}
+
+.purchase .price {
+  margin-block: 0.5rem;
+  font-size: 2.5rem;
+  color: var(--text)
+}
+
+@media (max-width: 1000px) {
+  .product-page-content {
+    flex-direction: column;
+  }
+
+  .product-page-content .product-visual,
+  .product-page-content .product-description {
+    margin: clamp(1rem, 5vw, 4rem);
+    align-self: center;
+  }
+
+  .product-description {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .purchase {
+    flex-direction: column;
+  }
+
+  .purchase button {
+    margin-inline: auto;
+  }
+
+  .purchase .price {
+    margin-inline: auto;
+    margin-bottom: 2rem;
+  }
 }
