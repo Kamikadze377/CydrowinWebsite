@@ -1309,13 +1309,12 @@ footer {
 .product-page {
   display: flex;
   flex-direction: column;
-  height: 100%;
   background: var(--bg);
 }
 
 .product-page main {
   flex: 1 0 auto;
-  background: linear-gradient(to bottom, var(--bgDrk) 0%, var(--bg) 100%);
+  background: linear-gradient(to top, var(--bgDrk) 0%, var(--bg) 100%);
 
   /* border: solid lime; */
 }
@@ -1329,7 +1328,7 @@ footer {
   height: 100%;
   /* margin-block: 5rem; */
   max-width: 900px;
-  margin-block: 10rem 15rem;
+  margin-block: 10rem 12rem;
   margin-inline: auto;
   padding-inline: 10rem;
 
@@ -1448,14 +1447,12 @@ footer {
 
   .purchase .price {
     margin-inline: auto;
-    /* margin-bottom: 2rem; */
-    margin: 0 0 2rem 0;
+    margin-bottom: 4rem;
   }
 }
 
 .similar-products {
-  min-height: 100vh;
-  background-image: linear-gradient(to top, white, var(--bg));
+  background-image: linear-gradient(to bottom, var(--bgDrk), var(--accent));
 }
 
 .similar-products-title {
@@ -1465,12 +1462,14 @@ footer {
 .similar-products-title h2 {
   color: var(--text);
   font-size: clamp(2rem, 4vw, 3rem);
-  margin: 5rem auto 7rem;
+  margin: 5rem auto 6rem;
+  padding-inline: 1rem;
+  text-align: center;
 }
 
 .similar-products-content {
   display: flex;
-  padding-bottom: 7.5rem;
+  padding-bottom: 5rem;
 }
 
 @media (max-width: 600px) {
