@@ -1314,7 +1314,7 @@ footer {
 
 .product-page main {
   flex: 1 0 auto;
-  background: linear-gradient(to top, var(--bgDrk) 0%, var(--bg) 100%);
+  background: linear-gradient(to top, var(--bgDrk), var(--bg));
 
   /* border: solid lime; */
 }
@@ -1325,7 +1325,7 @@ footer {
 
 .product-page-content {
   display: flex;
-  height: 100%;
+  min-height: 50vh;
   /* margin-block: 5rem; */
   max-width: 900px;
   margin-block: 10rem 12rem;
