@@ -1330,24 +1330,27 @@ footer {
   max-width: 900px;
   margin-block: 10rem 12rem;
   margin-inline: auto;
-  padding-inline: 10rem;
+  padding-inline: clamp(5rem, 25vw, 7rem);
 
   /* border: solid yellow; */
 }
 
 .product-page-content .product-visual {
   /* margin: 5rem; */
-
+  margin: 0;
   border: none;
 }
 
 .product-page-content .product-visual img {
   width: clamp(50px, 100px, 125px);
+  margin: 0;
 }
 
 .product-page-content .product-description {
-  /* margin: 5rem; */
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 400px;
 
   margin: 0 0 0 10rem;
   /* border: solid green; */
@@ -1361,7 +1364,8 @@ footer {
   /* margin-block: 0 3rem; */
   text-shadow: 0 7px 10px rgba(0, 0, 0, 0.12);
 
-  margin: 0 0 2.5rem 0;
+  /* margin: 0 0 2.5rem 0; */
+  margin: 0;
   /* border: solid blue; */
 }
 
@@ -1369,7 +1373,8 @@ footer {
   color: var(--text);
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
 
-  margin: 0 0 2rem 0;
+  /* margin: 0 0 2rem 0; */
+  margin: 0;
   /* border: solid violet; */
 }
 
@@ -1379,7 +1384,8 @@ footer {
   line-height: 1.5;
   color: var(--text);
 
-  margin: 0 0 4rem 0;
+  /* margin: 0 0 4rem 0; */
+  margin: 0;
   /* border: solid orange; */
 }
 
@@ -1418,21 +1424,32 @@ footer {
   margin: 0;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .product-page-content {
     flex-direction: column;
-    padding-inline: 2.5rem;
+    padding-inline: clamp(1rem, 10vw, 2.5rem);
   }
 
   .product-page-content .product-visual,
   .product-page-content .product-description {
     /* margin: clamp(1rem, 5vw, 4rem); */
-    margin: 4rem 0 0 0;
+    /* margin: 4rem 0 0 0; */
+    margin: 0 0 clamp(2rem, 10vw, 4rem) 0;
     align-self: center;
+
+    /* border: solid red; */
   }
 
   .product-description {
     text-align: center;
+    min-height: fit-content;
+  }
+
+  .product-description .title,
+  .product-description .subtitle,
+  .product-description .text,
+  .product-description .purchase {
+    margin: clamp(0.5rem, 5vw, 1rem);
   }
 }
 
