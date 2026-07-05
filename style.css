@@ -1399,6 +1399,8 @@ footer {
   color: var(--bg);
   background-color: var(--accent);
   transition: background-color ease 0.3s;
+
+  margin: 0;
 }
 
 .purchase button:hover {
@@ -1412,28 +1414,27 @@ footer {
   margin: 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .product-page-content {
     flex-direction: column;
-    padding-inline: clamp(1rem, 10vw, 2.5rem);
+    padding: 0 clamp(1rem, 10vw, 2.5rem) ;
   }
 
   .product-page-content .product-visual,
   .product-page-content .product-description {
-    margin: 0 0 clamp(2rem, 10vw, 4rem) 0;
+    margin: 1rem 0;
     align-self: center;
   }
 
-  .product-page-content .product-description {
+  .product-description {
     text-align: center;
     min-height: fit-content;
-    height: 100vw;
   }
 
-  .product-page-content .product-description .title,
-  .product-page-content .product-description .subtitle,
-  .product-page-content .product-description .text,
-  .product-page-content .product-description .purchase {
+  .product-description .title,
+  .product-description .subtitle,
+  .product-description .text,
+  .product-description .purchase {
     margin: clamp(0.5rem, 5vw, 1rem);
   }
 }
