@@ -1215,7 +1215,8 @@ footer {
   padding-bottom: clamp(4rem, 9vw, 7.8125rem);
 }
 
-.products {
+.products,
+.similar-products-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
@@ -1314,9 +1315,12 @@ footer {
 
 .product-page main {
   flex: 1 0 auto;
-  background: linear-gradient(to top, var(--bgDrk), var(--bg));
-
-  /* border: solid lime; */
+  padding: clamp(2rem, 5vw, 4rem);
+  background-image: url("assets/aperitif.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .product-page footer {
@@ -1326,17 +1330,17 @@ footer {
 .product-page-content {
   display: flex;
   min-height: 50vh;
-  /* margin-block: 5rem; */
   max-width: 900px;
   margin-block: 10rem 12rem;
   margin-inline: auto;
-  padding-inline: clamp(5rem, 25vw, 7rem);
+  padding: clamp(5rem, 25vw, 7rem) clamp(7rem, 37vw, 10rem);
 
-  /* border: solid yellow; */
+  background: linear-gradient(to top, var(--bg), white);
+  border-radius: 50px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 .product-page-content .product-visual {
-  /* margin: 5rem; */
   margin: 0;
   border: none;
 }
@@ -1351,9 +1355,7 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   max-height: 400px;
-
   margin: 0 0 0 10rem;
-  /* border: solid green; */
 }
 
 .product-page-content .title {
@@ -1361,21 +1363,14 @@ footer {
   font-weight: 500;
   font-size: clamp(2.5rem, 6vw, 4rem);
   color: var(--text);
-  /* margin-block: 0 3rem; */
   text-shadow: 0 7px 10px rgba(0, 0, 0, 0.12);
-
-  /* margin: 0 0 2.5rem 0; */
   margin: 0;
-  /* border: solid blue; */
 }
 
 .product-page-content .subtitle {
   color: var(--text);
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-
-  /* margin: 0 0 2rem 0; */
   margin: 0;
-  /* border: solid violet; */
 }
 
 .product-page-content .text {
@@ -1383,20 +1378,14 @@ footer {
   font-size: clamp(1rem, 1.6vw, 1.25rem);
   line-height: 1.5;
   color: var(--text);
-
-  /* margin: 0 0 4rem 0; */
   margin: 0;
-  /* border: solid orange; */
 }
 
 .purchase {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-block: 2rem; */
-
   margin: 0;
-  /* border: solid purple; */
 }
 
 .purchase button {
@@ -1417,14 +1406,13 @@ footer {
 }
 
 .purchase .price {
-  /* margin-block: 0.5rem; */
   font-size: 2.5rem;
   color: var(--text);
 
   margin: 0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .product-page-content {
     flex-direction: column;
     padding-inline: clamp(1rem, 10vw, 2.5rem);
@@ -1432,23 +1420,20 @@ footer {
 
   .product-page-content .product-visual,
   .product-page-content .product-description {
-    /* margin: clamp(1rem, 5vw, 4rem); */
-    /* margin: 4rem 0 0 0; */
     margin: 0 0 clamp(2rem, 10vw, 4rem) 0;
     align-self: center;
-
-    /* border: solid red; */
   }
 
-  .product-description {
+  .product-page-content .product-description {
     text-align: center;
     min-height: fit-content;
+    height: 100vw;
   }
 
-  .product-description .title,
-  .product-description .subtitle,
-  .product-description .text,
-  .product-description .purchase {
+  .product-page-content .product-description .title,
+  .product-page-content .product-description .subtitle,
+  .product-page-content .product-description .text,
+  .product-page-content .product-description .purchase {
     margin: clamp(0.5rem, 5vw, 1rem);
   }
 }
@@ -1458,13 +1443,13 @@ footer {
     flex-direction: column;
   }
 
-  .purchase button {
-    margin-inline: auto;
-  }
-
   .purchase .price {
     margin-inline: auto;
-    margin-bottom: 4rem;
+    margin-bottom: clamp(2rem, 10vw, 3rem)
+  }
+
+  .purchase button {
+    margin-inline: auto;
   }
 }
 
@@ -1485,13 +1470,13 @@ footer {
 }
 
 .similar-products-content {
-  display: flex;
+  align-items: start;
+  row-gap: clamp(4rem, 8vw, 7rem);
   padding-bottom: 5rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .similar-products-content {
-    flex-wrap: wrap;
-    justify-content: center;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
