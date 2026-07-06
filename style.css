@@ -1360,7 +1360,7 @@ footer {
   z-index: -1;
   border-radius: inherit;
   background: linear-gradient(to top, var(--bg), white);
-  filter: blur(9px);
+  filter: blur(10px);
   transform: translateZ(0);
 }
 
@@ -1494,6 +1494,10 @@ footer {
     padding: 5rem clamp(1rem, 10vw, 2.5rem) 0 clamp(1rem, 10vw, 2.5rem);
   }
 
+  .product-page-content::before {
+    filter: blur(5px);
+  }
+
   .product-page-content .product-visual,
   .product-page-content .product-description {
     margin: 1rem 0;
@@ -1530,6 +1534,10 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .product-page-content::before {
+    filter: blur(2px);
+  }
+
   .product-page-content .purchase {
     flex-direction: column;
   }
