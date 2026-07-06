@@ -728,6 +728,23 @@ nav ul {
   opacity: 0;
   transform: translateY(60px);
   transition: opacity 1.75s ease, transform 1.75s ease;
+  transition-delay: var(--gallery-reveal-delay, 0s);
+}
+
+.pair-of-photos:nth-of-type(1) .described-photo:nth-child(1) {
+  --gallery-reveal-delay: 0s;
+}
+
+.pair-of-photos:nth-of-type(1) .described-photo:nth-child(2) {
+  --gallery-reveal-delay: 0.25s;
+}
+
+.pair-of-photos:nth-of-type(2) .described-photo:nth-child(1) {
+  --gallery-reveal-delay: 0.5s;
+}
+
+.pair-of-photos:nth-of-type(2) .described-photo:nth-child(2) {
+  --gallery-reveal-delay: 0.75s;
 }
 
 .described-photo.reveal-up.visible {
@@ -800,10 +817,6 @@ nav ul {
     align-items: center;
     justify-content: flex-start;
     column-gap: 0;
-  }
-
-  .pair-of-photos .described-photo {
-    transition-delay: 0.25s !important;
   }
 
   .pair-of-photos:nth-of-type(1) .described-photo:nth-child(2) {
@@ -1310,6 +1323,7 @@ footer {
 .product-page {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   background: var(--bg);
 }
 
@@ -1331,7 +1345,6 @@ footer {
   position: relative;
   isolation: isolate;
   display: flex;
-  min-height: 50vh;
   max-width: 900px;
   margin-block: 10rem 12rem;
   margin-inline: auto;
@@ -1352,7 +1365,7 @@ footer {
 }
 
 .product-page-content .product-visual {
-  margin: 0;
+  margin: 0 4rem 0 4rem;
   border: none;
 }
 
@@ -1425,7 +1438,57 @@ footer {
   margin: 0;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
+  .product-page-content {
+    max-width: 760px;
+    margin-block: 7rem 9rem;
+    padding: clamp(3.5rem, 8vw, 5rem) clamp(3rem, 8vw, 5.5rem);
+  }
+
+  .product-page-content .product-visual {
+    margin-inline: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .product-page-content .product-visual img {
+    height: clamp(280px, 30vw, 350px);
+  }
+
+  .product-page-content .product-description {
+    max-height: clamp(280px, 30vw, 350px);
+    margin-left: clamp(3rem, 7vw, 6rem);
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  .product-page-content .title {
+    font-size: clamp(2.35rem, 5vw, 3.25rem);
+  }
+
+  .product-page-content .subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+  }
+
+  .product-page-content .text {
+    font-size: clamp(0.9rem, 1.35vw, 1.05rem);
+    line-height: 1.45;
+  }
+
+  .product-page-content .purchase {
+    column-gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  .product-page-content .purchase .price {
+    font-size: clamp(1.9rem, 4vw, 2.25rem);
+  }
+
+  .product-page-content .purchase button {
+    padding-block: 0.65rem;
+    padding-inline: 1.25rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 1000px) {
   .product-page-content {
     flex-direction: column;
     padding: 5rem clamp(1rem, 10vw, 2.5rem) 0 clamp(1rem, 10vw, 2.5rem);
@@ -1437,46 +1500,46 @@ footer {
     align-self: center;
   }
 
-  .product-description {
+  .product-page-content .product-description {
     text-align: center;
     min-height: fit-content;
     max-height: none;
   }
 
-  .product-description .title,
-  .product-description .subtitle,
-  .product-description .text,
-  .product-description .purchase {
+  .product-page-content .product-description .title,
+  .product-page-content .product-description .subtitle,
+  .product-page-content .product-description .text,
+  .product-page-content .product-description .purchase {
     margin-inline: clamp(0.5rem, 5vw, 1rem);
     margin-block: 1.5rem;
   }
 
-  .product-description .title {
+  .product-page-content .product-description .title {
     margin-top: 2rem;
   }
 
-  .product-description .purchase {
+  .product-page-content .product-description .purchase {
     flex-direction: column;
     gap: 5rem;
   }
 
-  .purchase button {
+  .product-page-content .purchase button {
     margin-inline: auto;
     margin-bottom: 2rem;
   }
 }
 
 @media (max-width: 600px) {
-  .purchase {
+  .product-page-content .purchase {
     flex-direction: column;
   }
 
-  .purchase .price {
+  .product-page-content .purchase .price {
     margin-inline: auto;
     margin-bottom: clamp(2rem, 10vw, 3rem)
   }
 
-  .purchase button {
+  .product-page-content .purchase button {
     margin-inline: auto;
   }
 }
