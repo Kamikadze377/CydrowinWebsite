@@ -1509,14 +1509,15 @@ footer {
     padding: 5rem clamp(1rem, 10vw, 2.5rem) 0 clamp(1rem, 10vw, 2.5rem);
   }
 
-  .product-page-content::before {
-    filter: blur(5px);
-  }
-
   .product-page-content .product-visual,
   .product-page-content .product-description {
     margin: 1rem 0;
     align-self: center;
+  }
+
+  .product-page-content .product-visual img {
+    /* height: clamp(350px, 400px, 450px); */
+    height: 500px;
   }
 
   .product-page-content .product-description {
