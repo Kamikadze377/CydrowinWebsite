@@ -1550,10 +1550,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .product-page-content::before {
-    filter: blur(2px);
-  }
-
   .product-page-content .purchase {
     flex-direction: column;
   }
