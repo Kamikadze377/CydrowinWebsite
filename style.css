@@ -1645,6 +1645,8 @@ footer {
 .recommendations {
   width: 100%;
   margin: 2rem 0 3rem 0;
+
+  border: solid red;
 }
 
 .recommendations-title {
@@ -1656,6 +1658,8 @@ footer {
   font-weight: bold;
   line-height: 1.25;
   color: var(--accentDrk);
+
+  border: solid blue;
 }
 
 .food-list {
@@ -1665,6 +1669,8 @@ footer {
   gap: clamp(1rem, 4vw, 2rem);
   align-items: end;
   margin: 0 4rem 0 4rem;
+
+  border: solid lime;
 }
 
 .food {
@@ -1676,6 +1682,8 @@ footer {
   min-width: 0;
   margin: 0;
   text-align: center;
+
+  border: solid yellow;
 }
 
 .food--shrimp {
