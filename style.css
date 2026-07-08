@@ -1646,7 +1646,7 @@ footer {
   width: 100%;
   margin: 2rem 0 3rem 0;
 
-  border: solid red;
+  /* border: solid red; */
 }
 
 .recommendations-title {
@@ -1659,7 +1659,7 @@ footer {
   line-height: 1.25;
   color: var(--accentDrk);
 
-  border: solid blue;
+  /* border: solid blue; */
 }
 
 .food-list {
@@ -1670,7 +1670,7 @@ footer {
   align-items: end;
   margin: 0 4rem 0 4rem;
 
-  border: solid lime;
+  /* border: solid lime; */
 }
 
 .food {
@@ -1683,11 +1683,12 @@ footer {
   margin: 0;
   text-align: center;
 
-  border: solid yellow;
+  /* border: solid yellow; */
 }
 
 .food--shrimp {
   transform: translateY(12.5%);
+  margin-bottom: 0.5rem;
 }
 
 .food-image {
