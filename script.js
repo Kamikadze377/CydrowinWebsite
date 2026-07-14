@@ -152,6 +152,83 @@ if ("IntersectionObserver" in window) {
 window.addEventListener("load", revealPassedElements);
 window.addEventListener("scroll", revealPassedElements, { passive: true });
 
+// food recommendations
+
+const foodLists = document.querySelectorAll(".food-list");
+const foodRevealItems = Array.from(document.querySelectorAll(".food-list .food"));
+const pendingFoodRevealItems = new Set();
+const foodRevealDelay = 260;
+let foodRevealObserver = null;
+let foodRevealFrame = null;
+
+function revealFoodItems(elements) {
+    elements.forEach((element, index) => {
+        element.style.setProperty("--food-reveal-delay", `${index * foodRevealDelay}ms`);
+        element.classList.add("food-visible");
+
+        if (foodRevealObserver) {
+            foodRevealObserver.unobserve(element);
+        }
+    });
+}
+
+function compareFoodRevealOrder(firstElement, secondElement) {
+    return foodRevealItems.indexOf(firstElement) - foodRevealItems.indexOf(secondElement);
+}
+
+function isFoodRevealInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    return rect.bottom > 0
+        && rect.right > 0
+        && rect.top < viewportHeight
+        && rect.left < viewportWidth;
+}
+
+function flushFoodRevealItems() {
+    foodRevealFrame = null;
+
+    const visibleItems = Array.from(pendingFoodRevealItems)
+        .filter((element) => !element.classList.contains("food-visible"))
+        .filter(isFoodRevealInViewport)
+        .sort(compareFoodRevealOrder);
+
+    pendingFoodRevealItems.clear();
+    revealFoodItems(visibleItems);
+}
+
+function queueFoodReveal(element) {
+    pendingFoodRevealItems.add(element);
+
+    if (foodRevealFrame === null) {
+        foodRevealFrame = window.requestAnimationFrame(flushFoodRevealItems);
+    }
+}
+
+if (foodRevealItems.length) {
+    foodLists.forEach((list) => list.classList.add("food-list--revealing"));
+
+    const prefersReducedFoodMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if ("IntersectionObserver" in window && !prefersReducedFoodMotion) {
+        foodRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    queueFoodReveal(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        foodRevealItems.forEach((element) => foodRevealObserver.observe(element));
+    } else {
+        revealFoodItems(foodRevealItems);
+    }
+}
+
 // quick-message
 
 document.addEventListener('DOMContentLoaded', function () {
