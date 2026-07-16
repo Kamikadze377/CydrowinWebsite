@@ -1413,7 +1413,7 @@ footer {
 .product-page-content .title {
   font-family: "WindSong", cursive;
   font-weight: 500;
-  font-size: clamp(3.2rem, 5vw, 4rem);
+  font-size: clamp(3.6rem, 5vw, 4rem);
   color: var(--text);
   text-shadow: 0 7px 10px rgba(0, 0, 0, 0.12);
   margin: 0;
@@ -1422,7 +1422,7 @@ footer {
 .product-page-content .subtitle {
   color: var(--text);
   font-size: 1.75rem;
-  line-height: 1.15;
+  line-height: 1.5;
   font-weight: 700;
   margin: 0;
 }
@@ -1468,7 +1468,9 @@ footer {
 }
 
 .purchase .price {
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: 1.75rem;
+  line-height: 1.15;
+  font-weight: 700;
   color: var(--text);
 
   margin: 0;
@@ -1510,9 +1512,9 @@ footer {
     column-gap: clamp(1rem, 3vw, 2rem);
   }
 
-  .product-page-content .purchase .price {
+  /* .product-page-content .purchase .price {
     font-size: clamp(1.9rem, 4vw, 2.25rem);
-  }
+  } */
 
   .product-page-content .purchase button {
     padding-block: 0.65rem;
@@ -1548,6 +1550,7 @@ footer {
 
   .product-page-content .product-visual img {
     /* height: clamp(18rem, 70vw, 26rem); */
+    height: 500px;
     margin-top: 4rem;
   }
 
@@ -1585,13 +1588,17 @@ footer {
   }
 
   .product-page-content .product-description .title {
-    margin-bottom: 2rem;
+    margin-block: 4rem 2rem;
   }
 }
 
 @media (max-width: 600px) {
   .product-page-content {
     border-radius: clamp(1rem, 6vw, 1.75rem);
+  }
+
+  .product-page-content .subtitle {
+    padding-inline: 20%;
   }
 
   .product-page-content .purchase {
@@ -1612,9 +1619,22 @@ footer {
   }
 
   .product-page-content .product-visual img {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 }
+
+@media (max-width: 400px) {
+  .product-page-content .subtitle {
+    padding-inline: 10%;
+  }
+}
+
+@media (max-width: 350px) {
+  .product-page-content .subtitle {
+    padding-inline: 0;
+  }
+}
+
 
 .recommendations {
   width: 100%;
@@ -1713,6 +1733,12 @@ footer {
   }
 }
 
+@media (max-width: 1000px) {
+  .recommendations-title {
+    margin-top: 4rem;
+  }
+}
+
 @media (max-width: 600px) {
   .food-list {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -1731,6 +1757,7 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .food-list.food-list--revealing .food,
   .food-list.food-list--revealing .food.food-visible {
     opacity: 1;
